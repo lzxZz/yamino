@@ -14,6 +14,8 @@
 ```
 project new (project_name) -args...
 ```
+参数
+    -i(ignore)选择忽略的部分, 包括doc, test, exmp, git, 多个参数使用逗号分割
 
 此时默认情况下需要按照下面的文件结构来创建
 ```

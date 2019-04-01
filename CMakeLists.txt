@@ -1,11 +1,15 @@
 cmake_minimum_required(VERSION 3.0)
 
-project(yamino CXX)
 
-include_directories(
-    yamino
-)
 
-aux_source_directory(yamino SRCS)
+project(yamino/)
 
-add_executable(yamino ${SRCS})
+#如果不需要测试代码,注释下面一行
+add_subdirectory(tests)
+
+#如果不需要示例代码,注释下面一行
+add_subdirectory(example)
+
+add_subdirectory(yamino/)
+
+

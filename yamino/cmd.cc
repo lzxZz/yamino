@@ -7,7 +7,18 @@ using std::string;
 using std::vector;
 namespace yamino{
     namespace {
-        const string make_file_content = "\".PHONY : build clean\n\nbuild:\n\t@./scripts/build.sh\n\n\nclean:\n\t@-rm -r build\"";
+        const string make_file_content = 
+R"(".PHONY : build clean test
+
+build:
+\t@./scripts/build.sh
+
+clean:
+\t@-rm -r build
+
+test:
+\t@./build/tests/test_main
+")";
         const string build_script_file_content = "\"#!/bin/bash\n\nmkdir build\ncd build\npwd\ncmake ..\nmake\"";
         const string empty_cmake_file_content = "cmake_minimum_required(VERSION 3.0)\n\n";
         
@@ -56,7 +67,7 @@ namespace yamino{
         system(("echo \"" + empty_cmake_file_content + "\" > "+ project + "/"  + project + "/CMakeLists.txt").c_str());
     }
     void CreatReadMe(const string project){
-        system(("echo \"# 项目说明\" > "+ project + "/Readnme.md").c_str());
+        system(("echo \"# 项目说明\" > "+ project + "/Readme.md").c_str());
     }
     void CreatGit(const string project){
         system(("cd " + project + " && git init").c_str());
