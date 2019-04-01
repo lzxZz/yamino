@@ -24,19 +24,21 @@ namespace lzx::yamino {
       virtual const std::set<std::string> &Dirs() const {
          if (!is_generator){
             Generate();
+            is_generator = true;
          }
          return directories_;
       }
       virtual const std::map<std::string, std::string> &Files() const {
          if (!is_generator){
             Generate();
+            is_generator = true;
          }
          return files_;
       }
       
    protected:
       virtual void Generate() const {}
-      bool is_generator = false;
+      mutable bool is_generator = false;
       // 只作为存储最终创建文件信息的部分存在,
       mutable std::set<std::string> directories_;     
       mutable std::map<std::string, std::string> files_;
@@ -45,7 +47,7 @@ namespace lzx::yamino {
       bool doc_ = true;
       bool test_ = true;
       bool example_ = true;
-      bool binary_;
+      bool binary_ = true;
       const std::string root_dir_;
       const std::string project_name_;
    };

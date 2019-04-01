@@ -20,14 +20,14 @@ int main(int argc, char **argv){
         return -1;
     }
     
-    bool is_library = false;
+    bool is_library = true;
     bool set_dir = false;
     string root_dir = ".";
     bool is_fix = false;
     for (int i = 3; i < argc; i++){
         string arg = argv[i];       //将const char*转换为string,否则==运算回比较指针
-        if (arg == "-lib"){
-            is_library = true;
+        if (arg == "-bin"){
+            is_library = false;
         }else if (arg == "-dir"){         // 设置项目创建的目录
             root_dir = argv[++i];
         }else if ( arg == "-fix"){
@@ -62,7 +62,8 @@ int main(int argc, char **argv){
     cout << "linux" << endl;
     maker = new LinuxMaker();
 #elif defined WIN32
-    cout << "windows" << endl;
+    cout << "暂不支持windows平台" << endl;
+
     maker = new WindowsMaker();
 #else
     cout << "未定义Maker" << endl;
