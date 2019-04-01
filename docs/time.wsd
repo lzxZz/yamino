@@ -1,0 +1,10 @@
+@startuml "time"
+
+(*) --> "参数解析"
+--> 使用Builder构建Project
+--> 完成Project构建
+--> 使用Maker实例化项目
+--> (*)
+
+
+@enduml
